@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TechnicalExercise</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="api_key">b9d0bb93aae96a4736cc784ef6237f7f</string>
+</resources>
