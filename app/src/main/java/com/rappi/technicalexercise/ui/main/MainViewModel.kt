@@ -2,6 +2,7 @@ package com.rappi.technicalexercise.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.jesusvilla.data.source.handler.Status
 import com.jesusvilla.domain.Movie
 import com.rappi.technicalexercise.ui.common.ScopedViewModel
 import com.jesusvilla.usecases.GetPopularMovies
@@ -23,6 +24,7 @@ class MainViewModel @Inject constructor(private val getPopularMovies: GetPopular
         object Loading : UiModel()
         class Content(val movies: List<Movie>) : UiModel()
         class Navigation(val movie: Movie) : UiModel()
+        class Error(val msg: String): UiModel()
         object RequestLocationPermission : UiModel()
     }
 
@@ -37,7 +39,12 @@ class MainViewModel @Inject constructor(private val getPopularMovies: GetPopular
     fun onCoarsePermissionRequested() {
         launch {
             _model.value = UiModel.Loading
-            _model.value = UiModel.Content(getPopularMovies.invoke())
+            val value = getPopularMovies.invoke()
+            when(value.status){
+                Status.SUCCESS -> _model.value = UiModel.Content(value.data!!)
+                Status.ERROR -> _model.value = UiModel.Error(value.message!!)
+            }
+
         }
     }
 

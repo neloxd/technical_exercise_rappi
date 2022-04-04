@@ -6,6 +6,7 @@ import com.jesusvilla.data.repository.RegionRepository
 import com.jesusvilla.data.source.LocalDataSource
 import com.jesusvilla.data.source.LocationDataSource
 import com.jesusvilla.data.source.RemoteDataSource
+import com.jesusvilla.data.source.handler.ResponseHandler
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,6 +28,7 @@ class DataModule {
         localDataSource: LocalDataSource,
         remoteDataSource: RemoteDataSource,
         regionRepository: RegionRepository,
-        @Named("apiKey") apiKey: String
-    ) = MoviesRepository(localDataSource, remoteDataSource, regionRepository, apiKey)
+        @Named("apiKey") apiKey: String,
+        responseHandler: ResponseHandler
+    ) = MoviesRepository(localDataSource, remoteDataSource, regionRepository, apiKey, responseHandler)
 }

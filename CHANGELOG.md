@@ -11,6 +11,7 @@ This documentation belongs to the technical test for Rappi
 - Possible improvements, modularize features (detail, search, movie, tv)
 ### Removed
 ### Fixed
+- bugfix/networking: Retry connection & request permission location
 
 ## [Builded] Date
 ### Added
