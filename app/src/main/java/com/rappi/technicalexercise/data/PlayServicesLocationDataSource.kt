@@ -19,7 +19,12 @@ class PlayServicesLocationDataSource(application: Application) : LocationDataSou
         suspendCancellableCoroutine { continuation ->
             fusedLocationClient.lastLocation
                 .addOnCompleteListener {
-                    continuation.resume(it.result.toRegion())
+                    val region = it.result.toRegion()
+                    if(region?.isNotEmpty() == true)
+                        continuation.resume(region)
+                    else
+                        continuation.resume(null)
+
                 }
         }
 

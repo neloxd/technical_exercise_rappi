@@ -7,6 +7,7 @@ import com.jesusvilla.data.repository.PermissionChecker
 import com.jesusvilla.data.source.LocalDataSource
 import com.jesusvilla.data.source.LocationDataSource
 import com.jesusvilla.data.source.RemoteDataSource
+import com.jesusvilla.data.source.handler.ResponseHandler
 import com.rappi.technicalexercise.R
 import com.rappi.technicalexercise.data.AndroidPermissionChecker
 import com.rappi.technicalexercise.data.PlayServicesLocationDataSource
@@ -50,4 +51,8 @@ class AppModule {
     @Provides
     fun permissionCheckerProvider(app: Application): PermissionChecker =
         AndroidPermissionChecker(app)
+
+    @Provides
+    fun responseHandler(): ResponseHandler =
+        ResponseHandler()
 }

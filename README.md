@@ -13,5 +13,5 @@ This documentation belongs to the technical test for Rappi
 ### Fixed
 
 ## [Builded] Date
-### Added
+#### Added
 
